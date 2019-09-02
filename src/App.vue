@@ -7,10 +7,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9">Inventory
-         <inventory :items="items"></inventory>
+         <inventory @newItemAdded="addCartItem" :items="items"></inventory>
         </div>
         <div class="col-md-3">
-          <cart></cart>
+          <cart :items="cart"></cart>
         </div>
       </div>
     </div>
@@ -35,14 +35,26 @@ export default {
 
     data(){
          return {
-             items:[]
+             items:[],
+             cart:[{
+                 id:1,
+                 title:'jagoar',
+                 photot:'http://dummyimage.com/155x146.bmp/dddddd/000000',
+                 price:10.55,
+             }
+             ]
          }
     },
 
      mounted() {
 
          this.items = data
-     }
+     },
+    methods : {
+         addCartItem(item){
+             this.cart.push(item)
+         }
+    }
 
 }
 </script>
