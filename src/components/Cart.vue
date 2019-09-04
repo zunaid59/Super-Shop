@@ -10,6 +10,7 @@
     <li v-for="(item,index) in items" :key="index" class="list-group-item">
       <span>{{item.title}}</span>
       <span class="item-price float-right">{{item.price}}</span>
+      <button class="btn btn-sm btn-danger" @click="removeItem(index)">-</button>
     </li>
     <hr>
     <li class="list-group-item">
@@ -27,15 +28,19 @@
         props:['items'],
         computed:{
             totalPrice(){
-                var total = 0
+                var total = 0;
                 this.items.forEach(item=> {
                     total+= parseFloat(item.price)
-                })
+                });
                 return total
             }
         },
-        mounted() {
-            console.log(item.price);
+
+        methods:{
+
+            removeItem(index){
+                this.$emit('itemRemoved',index)
+            }
         }
     }
 </script>

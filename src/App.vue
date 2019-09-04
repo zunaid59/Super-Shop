@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <navbar></navbar>
+  <navbar @search="search"></navbar>
 
 
 
@@ -10,7 +10,7 @@
          <inventory @newItemAdded="addCartItem" :items="items"></inventory>
         </div>
         <div class="col-md-3">
-          <cart :items="cart"></cart>
+          <cart :items="cart" @itemRemoved="removedItem"></cart>
         </div>
       </div>
     </div>
@@ -36,12 +36,7 @@ export default {
     data(){
          return {
              items:[],
-             cart:[{
-                 id:1,
-                 title:'jagoar',
-                 photot:'http://dummyimage.com/155x146.bmp/dddddd/000000',
-                 price:10.55,
-             }
+             cart:[
              ]
          }
     },
@@ -51,9 +46,26 @@ export default {
          this.items = data
      },
     methods : {
+
+         search(keyword){
+
+             this.items=data.filter(item=>{
+
+                 return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+
+             })
+
+         },
+
          addCartItem(item){
              this.cart.push(item)
-         }
+         },
+
+        removedItem(index){
+             this.cart.splice(index,1)
+        }
+
+
     }
 
 }
