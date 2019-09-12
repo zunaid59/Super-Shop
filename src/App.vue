@@ -1,19 +1,22 @@
 <template>
   <div id="app">
-  <navbar @search="search"></navbar>
+    <router-link :to="{path:'/'}">Home</router-link>
+    <router-link :to="{path:'/test'}">Test</router-link>
+    <router-view> </router-view>
+<!--  <navbar @search="search"></navbar>-->
 
 
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9">Inventory
-         <inventory @newItemAdded="addCartItem" :items="items"></inventory>
-        </div>
-        <div class="col-md-3">
-          <cart :items="cart" @itemRemoved="removedItem"></cart>
-        </div>
-      </div>
-    </div>
+<!--    <div class="container">-->
+<!--      <div class="row">-->
+<!--        <div class="col-md-9">Inventory-->
+<!--         <inventory @newItemAdded="addCartItem" :items="items"></inventory>-->
+<!--        </div>-->
+<!--        <div class="col-md-3">-->
+<!--          <cart :items="cart" @itemRemoved="removedItem"></cart>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
   </div>
 
