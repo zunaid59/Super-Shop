@@ -3,16 +3,25 @@
 import Vue from 'vue'
 import App from './App'
 
-window.$ = window.jQuery= require('jquery')
+window.$ = window.jQuery= require('jquery');
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 
-Vue.config.productionTip = false
+import VueRouter from 'vue-router'
+Vue.use(VueRouter);
+import {routes} from "./router/index";
+
+const router = new VueRouter({
+  routes
+});
+
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router,
   components: { App },
   template: '<App/>'
-})
+});
